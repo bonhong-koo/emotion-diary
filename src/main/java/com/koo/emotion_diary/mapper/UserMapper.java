@@ -25,4 +25,7 @@ public interface UserMapper {
   // 전체 회원 수 조회
   public int getCount();
 
+  // 회원 조회
+  public UserDTO selectUser(String id);
+
 }

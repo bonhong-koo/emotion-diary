@@ -41,4 +41,10 @@
 <select id="getCount" resultType="java.lang.Integer">
   SELECT COUNT(*) FROM USER
 </select>
+
+<!-- 회원 조회 -->
+<select id="selectUser" parameterType="String" resultType="UserDTO">
+  SELECT * FROM USER
+  WHERE id = #{id}
+</select>
 </mapper>
