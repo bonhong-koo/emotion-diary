@@ -9,4 +9,10 @@ public interface UserService {
 
   // 회원가입
   public int createUser(UserDTO param);
+
+  // 회원 조회
+  public UserDTO selectUser(String id);
+
+  // id 중복 체크
+  public int checkId(String id);
 }
