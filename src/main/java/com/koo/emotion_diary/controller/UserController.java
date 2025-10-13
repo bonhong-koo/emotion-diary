@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.koo.emotion_diary.domain.UserDTO;
@@ -21,7 +22,7 @@ public class UserController {
   }
 
   @PostMapping("/api/login")
-  public Map<String, Object> login(UserDTO param, HttpSession session) {
+  public Map<String, Object> login(@RequestBody UserDTO param, HttpSession session) {
     Map<String, Object> result = new HashMap<>();
 
     boolean flag = userService.login(param);
@@ -43,7 +44,7 @@ public class UserController {
   }
 
   @PostMapping("/api/create")
-  public Map<String, Object> createUser(UserDTO param) {
+  public Map<String, Object> createUser(@RequestBody UserDTO param) {
     Map<String, Object> result = new HashMap<>();
 
     int flag = userService.createUser(param);

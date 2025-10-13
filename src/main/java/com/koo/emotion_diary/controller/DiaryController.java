@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.koo.emotion_diary.domain.DiaryDTO;
@@ -23,7 +24,7 @@ public class DiaryController {
   }
 
   // 일기 목록
-  @GetMapping("/diaryList")
+  @GetMapping("/api/diaryList")
   public List<DiaryDTO> diaryList(HttpSession session) {
     UserDTO user = (UserDTO) session.getAttribute("loginUser");
     List<DiaryDTO> list = diaryService.diaryList(user.getId());
@@ -32,9 +33,11 @@ public class DiaryController {
   }
 
   // 일기 작성
-  @PostMapping("/createDiary")
-  public Map<String, Object> createDiary(DiaryDTO param) {
+  @PostMapping("/api/createDiary")
+  public Map<String, Object> createDiary(@RequestBody DiaryDTO param, HttpSession session) {
     Map<String, Object> result = new HashMap<>();
+    UserDTO user = (UserDTO) session.getAttribute("loginUser");
+    param.setId(user.getId());
     int flag = diaryService.createDiary(param);
 
     if (flag == 1) {
@@ -47,7 +50,8 @@ public class DiaryController {
     return result;
   }
 
-  @PostMapping("/updateDiary")
+  // 일기 수정
+  @PostMapping("/api/updateDiary")
   public Map<String, Object> updateDiary(DiaryDTO param) {
     Map<String, Object> result = new HashMap<>();
     int flag = diaryService.updateDiary(param);
@@ -62,7 +66,8 @@ public class DiaryController {
     return result;
   }
 
-  @PostMapping("/deleteDiary")
+  // 일기 삭제
+  @PostMapping("/api/deleteDiary")
   public Map<String, Object> deleteDiary(DiaryDTO param) {
     Map<String, Object> result = new HashMap<>();
     int flag = diaryService.deleteDiary(param.getNo());

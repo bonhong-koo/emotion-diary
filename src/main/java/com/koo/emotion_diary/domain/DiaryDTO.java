@@ -8,6 +8,9 @@ public class DiaryDTO {
   private String content;
   private String date;
 
+  public DiaryDTO() {
+  }
+
   public DiaryDTO(int no, String id, int emotion, String title, String content, String date) {
     this.no = no;
     this.id = id;

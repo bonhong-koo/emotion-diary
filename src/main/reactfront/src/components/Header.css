@@ -1,0 +1,9 @@
+.Header {
+  display: flex;
+  padding: 20px 10px;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(226, 226, 226);
+}
+.Header .header_center {
+  font-size: 25px;
+}
