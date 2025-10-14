@@ -49,9 +49,8 @@ const Editor = ({ onSubmit, data }) => {
   };
   const onClickSubmitButton = () => {
     const value = {
-      title: document.getElementById("title").value,
-      content: document.getElementById("content").value,
-      date: document.getElementById("date").value,
+      ...input,
+      date: getStringedDate(input.date),
     };
     onSubmit(value);
   };

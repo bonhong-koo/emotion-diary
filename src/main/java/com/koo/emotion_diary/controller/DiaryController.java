@@ -52,7 +52,7 @@ public class DiaryController {
 
   // 일기 수정
   @PostMapping("/api/updateDiary")
-  public Map<String, Object> updateDiary(DiaryDTO param) {
+  public Map<String, Object> updateDiary(@RequestBody DiaryDTO param) {
     Map<String, Object> result = new HashMap<>();
     int flag = diaryService.updateDiary(param);
 
@@ -68,7 +68,7 @@ public class DiaryController {
 
   // 일기 삭제
   @PostMapping("/api/deleteDiary")
-  public Map<String, Object> deleteDiary(DiaryDTO param) {
+  public Map<String, Object> deleteDiary(@RequestBody DiaryDTO param) {
     Map<String, Object> result = new HashMap<>();
     int flag = diaryService.deleteDiary(param.getNo());
 

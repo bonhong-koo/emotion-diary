@@ -38,6 +38,8 @@
     title = #{title},
     content = #{content},
     date = #{date}
+  WHERE no = #{no}
+  AND id = #{id}
   
 </update>
 
