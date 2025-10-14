@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.koo.emotion_diary.domain.UserDTO;
@@ -73,7 +74,7 @@ public class UserController {
   }
 
   @GetMapping("/api/checkId")
-  public Map<String, Object> checkId(String id) {
+  public Map<String, Object> checkId(@RequestParam("id") String id) {
     Map<String, Object> result = new HashMap<>();
     int flag = userService.checkId(id);
     if (flag == 1) {
@@ -85,6 +86,20 @@ public class UserController {
     }
 
     return result;
+  }
+
+  @GetMapping("/api/getSession")
+  public Map<String, Object> getSession(HttpSession session) {
+    Map<String, Object> result = new HashMap<>();
+    UserDTO user = (UserDTO) session.getAttribute("loginUser");
+    if (user != null) {
+      result.put("success", true);
+      result.put("user", user);
+    } else {
+      result.put("success", false);
+    }
+    return result;
+
   }
 
 }

@@ -18,7 +18,7 @@ const Login = () => {
         alert(res.data.message);
 
         if (res.data.success) {
-          nav("/diaryList");
+          nav("/diaryList", { replace: true });
         } else {
           return;
         }
@@ -42,7 +42,7 @@ const Login = () => {
       />
       <div className="Info">
         <div>
-          <form className="form-group">
+          <form className="form-group" action={"/loginProc"}>
             <label htmlFor="id">아이디</label>
             <input
               type="text"

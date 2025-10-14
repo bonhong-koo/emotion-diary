@@ -3,11 +3,23 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import Editor from "../components/Editor";
 import axios from "axios";
+import { useEffect } from "react";
 
 const Edit = () => {
   const params = useParams();
   const nav = useNavigate();
   const { state } = useLocation();
+
+  useEffect(() => {
+    if (!state) {
+      alert("접근할 수 없습니다.");
+      nav("/diaryList", { replace: true });
+      return;
+    }
+  });
+  if (!state) {
+    return null;
+  }
   function updateDiary(input) {
     axios
       .post("/api/updateDiary", input)

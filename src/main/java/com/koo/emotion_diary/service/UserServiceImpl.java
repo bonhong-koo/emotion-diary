@@ -1,13 +1,17 @@
 package com.koo.emotion_diary.service;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.koo.emotion_diary.domain.CustomUserDetails;
 import com.koo.emotion_diary.domain.UserDTO;
 import com.koo.emotion_diary.mapper.UserMapper;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
   private final UserMapper userMapper;
   private final PasswordEncoder passwordEncoder;
 
@@ -42,6 +46,17 @@ public class UserServiceImpl implements UserService {
   @Override
   public int checkId(String id) {
     return userMapper.checkId(id);
+  }
+
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    
+    UserDTO user = userMapper.selectUser(username);
+    
+    if(user != null){
+      return new CustomUserDetails(user);
+    }
+    return null;
   }
 
 }

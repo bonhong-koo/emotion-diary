@@ -1,17 +1,25 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import Header from "../components/Header";
-import Button from "../components/Button";
-import View from "../components/View";
 import { useEffect } from "react";
-import axios from "axios";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Button from "../components/Button";
+import Header from "../components/Header";
+import View from "../components/View";
+import Getsession from "../util/Getsession";
 
 const Diary = () => {
   const { state } = useLocation();
-  const params = new useParams();
-  const nav = new useNavigate();
+  const params = useParams();
+  const nav = useNavigate();
+
   useEffect(() => {
-    axios.get();
-  }, []);
+    if (!state) {
+      alert("접근할 수 없습니다.");
+      nav("/diaryList", { replace: true });
+      return;
+    }
+  });
+  if (!state) {
+    return null;
+  }
   return (
     <div>
       <Header

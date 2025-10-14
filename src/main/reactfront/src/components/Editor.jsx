@@ -52,6 +52,19 @@ const Editor = ({ onSubmit, data }) => {
       ...input,
       date: getStringedDate(input.date),
     };
+
+    if (input.title === "") {
+      alert("제목을 입력하세요!");
+      document.getElementById("title").focus();
+      return;
+    }
+
+    if (input.content === "") {
+      alert("내용을 입력하세요!");
+      document.getElementById("content").focus();
+      return;
+    }
+
     onSubmit(value);
   };
 
@@ -93,6 +106,7 @@ const Editor = ({ onSubmit, data }) => {
           id="title"
           onChange={onChangeInput}
           value={input.title}
+          maxLength={40}
         />
       </section>
       <section className="content_section">
@@ -102,6 +116,7 @@ const Editor = ({ onSubmit, data }) => {
           placeholder="오늘은 어땠나요?"
           value={input.content}
           onChange={onChangeInput}
+          maxLength={300}
         />
       </section>
       <section className="button_section">

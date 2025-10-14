@@ -3,9 +3,23 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import Editor from "../components/Editor";
 import axios from "axios";
+import { useEffect } from "react";
+import Getsession from "../util/Getsession";
 
 const New = () => {
   const nav = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      const session = await Getsession();
+
+      if (!session.success || !session) {
+        alert("로그인이 필요합니다.");
+        nav("/login", { replace: true });
+        return;
+      }
+    })();
+  }, []);
 
   const onSubmit = (input) => {
     axios

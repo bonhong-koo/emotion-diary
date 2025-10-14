@@ -111,6 +111,7 @@ public class DiaryMapperTest {
     log.info("dto:{}", dto);
 
     // 일기 수정
+    diary1.setNo(no);
     diary1.setTitle("수정된 제목");
     diary1.setEmotion(3);
     diary1.setContent("수정된 내용");
