@@ -42,7 +42,7 @@ const Login = () => {
       />
       <div className="Info">
         <div>
-          <form className="form-group" action={"/loginProc"}>
+          <form className="form-group">
             <label htmlFor="id">아이디</label>
             <input
               type="text"
