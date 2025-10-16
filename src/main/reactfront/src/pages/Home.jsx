@@ -2,9 +2,11 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import emotion_img from "./../assets/emotion_img.png";
+import usePageTitle from "../hooks/usePageTitle";
 
 const Home = () => {
   const nav = useNavigate();
+  usePageTitle("감정 일기장");
   return (
     <div className="Home">
       <Header

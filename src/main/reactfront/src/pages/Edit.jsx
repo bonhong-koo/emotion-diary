@@ -4,11 +4,13 @@ import Header from "../components/Header";
 import Editor from "../components/Editor";
 import axios from "axios";
 import { useEffect } from "react";
+import usePageTitle from "../hooks/usePageTitle";
 
 const Edit = () => {
   const params = useParams();
   const nav = useNavigate();
   const { state } = useLocation();
+  usePageTitle("일기 수정");
 
   useEffect(() => {
     if (!state) {

@@ -3,8 +3,10 @@ import Button from "../components/Button";
 import "./../components/Info.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import usePageTitle from "../hooks/usePageTitle";
 const Login = () => {
   const nav = useNavigate();
+  usePageTitle("로그인");
 
   function login(e) {
     e.preventDefault();

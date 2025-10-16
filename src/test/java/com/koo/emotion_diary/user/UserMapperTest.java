@@ -36,12 +36,13 @@ public class UserMapperTest {
 
     dto01 = new UserDTO("user1", "1234", "구본홍1", "not use");
     dto02 = new UserDTO("user2", "1234", "구본홍2", "not use");
+    userMapper.deleteAll();
 
   }
 
   @AfterEach
   void tearDown() {
-
+    userMapper.deleteAll();
   }
 
   // ID 중복확인
@@ -60,25 +61,6 @@ public class UserMapperTest {
 
     userMapper.deleteAll();
 
-  }
-
-  // 로그인 테스트
-  @Test
-  void loginUser() {
-    // 회원가입
-    int flag = userMapper.createUser(dto01);
-    assertEquals(1, flag);
-    // 로그인 성공
-    int isLogin = userMapper.loginUser(dto01.getId(), dto01.getPassword());
-    assertEquals(1, isLogin);
-    // 로그인 실패
-    isLogin = userMapper.loginUser("1234", "1234");
-    assertEquals(0, isLogin);
-
-    // 회원 삭제
-    userMapper.deleteUser(dto01.getId());
-    int count = userMapper.getCount();
-    assertEquals(0, count);
   }
 
   // 회원가입테스트

@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import List from "../components/List";
 import Getsession from "../util/Getsession";
+import usePageTitle from "../hooks/usePageTitle";
 
 const getMonthlyData = (pivotDate, data) => {
   const beginTime = new Date(
@@ -32,6 +33,7 @@ const DiaryList = () => {
   const [data, setData] = useState([]);
   const [pivotDate, setPivotDate] = useState(new Date());
   const nav = useNavigate();
+  usePageTitle("일기장");
   useEffect(() => {
     (async () => {
       const session = await Getsession();

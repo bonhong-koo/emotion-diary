@@ -3,9 +3,11 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import usePageTitle from "../hooks/usePageTitle";
 
 const Regist = () => {
   const nav = useNavigate();
+  usePageTitle("회원 가입");
   function createUser(e) {
     e.preventDefault();
     const id = document.getElementById("id");

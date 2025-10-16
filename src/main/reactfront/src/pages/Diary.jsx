@@ -4,11 +4,13 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import View from "../components/View";
 import Getsession from "../util/Getsession";
+import usePageTitle from "../hooks/usePageTitle";
 
 const Diary = () => {
   const { state } = useLocation();
   const params = useParams();
   const nav = useNavigate();
+  usePageTitle(`일기`);
 
   useEffect(() => {
     if (!state) {

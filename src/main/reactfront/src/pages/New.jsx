@@ -5,9 +5,11 @@ import Editor from "../components/Editor";
 import axios from "axios";
 import { useEffect } from "react";
 import Getsession from "../util/Getsession";
+import usePageTitle from "../hooks/usePageTitle";
 
 const New = () => {
   const nav = useNavigate();
+  usePageTitle("일기 작성");
 
   useEffect(() => {
     (async () => {

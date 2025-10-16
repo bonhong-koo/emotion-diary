@@ -11,7 +11,7 @@ public interface UserMapper {
   public int createUser(UserDTO param);
 
   // 로그인
-  public int loginUser(String id, String password);
+  public int loginUser(UserDTO param);
 
   // 아이디 중복 확인
   public int checkId(String id);
